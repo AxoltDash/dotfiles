@@ -1,0 +1,151 @@
+{   
+    "font": ["RobotoMono Nerd Font", "RainWorldSymbols"],
+    "font-family": ["RobotoMono Nerd Font", "RainWorldSymbols"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["hyprland/language", "network", "custom/separator", "pulseaudio", "custom/separator", "battery", "custom/separator", "group/nix"],
+
+    "hyprland/workspaces": {
+        //"format": "{icon}",
+        //"format": "<span font-family='RainWorldSymbols'>{icon}</span>",
+    
+        // Add more size
+        "format": "<span font-family='RainWorldSymbols' size='x-large'>{icon}</span>",
+        "format-icons": {
+            "1": "!",
+            "2": "@",
+            "3": "#",
+            "4": "$",
+            "5": "%",
+            "6": "a",
+            "7": "`",
+            "8": "W",
+            "9": "i",
+            "10": ")",
+        }
+    },
+	"hyprland/language": {
+		"format": "{long}  |",
+		"format-us": "AMERICA, HELL YEAH!",
+		"format-us(intl)": "As ñ",
+		"keyboard-name": "rdr-alice-"
+	},
+    "hyprland/window": {
+        "format": " - {title} ",
+        "max-length": 50
+    },
+
+    "network": {
+        "format-wifi": "  {essid} ({signalStrength}%)    ",
+        "format-ethernet": "  {ifname}   ",
+        "format-disconnected": "   ", 
+        "max-length": 50,
+        "on-click": "kitty -e nmtui"
+    },
+    
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt> ",
+        "format-alt": "{:%Y-%m-%d - %A} ",
+    
+        "format": " {:%I:%M %p}  "
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon}  ",
+        "format-muted": "0%    ",
+        "format-bluetooth": "{volume}% {icon}   {format_source}",
+        "format-bluetooth-muted": "󰂲 {icon}  󰂲 {format_source}",
+        "format-source": "{volume}%   ",
+        "format-source-muted": "  ",
+        "format-icons": {
+            "headphone": "  ",
+            "hands-free": "  ",
+            "headset": "  ",
+            "phone": "  ",
+            "portable": "  ",
+            "car": "  ",
+            "default": ["", "", ""]
+        },
+        "on-click": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 200%",
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% <span size='large'>{icon}</span>  ",
+        "format-full": "{capacity}% <span size='large'>{icon}</span>  ",
+        "format-charging": "{capacity}% <span size='large'>󰂄</span>  ",
+        "format-plugged": "{capacity}% <span size='large'></span>  ",
+        "format-alt": "{time} <span size='large'>{icon}</span>  ",
+
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "group/pc": {
+      "orientation": "horizontal",
+      "drawer": {
+        "transition-duration": 300,
+        "children-class": "pc",
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "cpu", 
+        "custom/separator",
+        "memory", 
+        "custom/separator",
+        "temperature"
+      ]
+    },
+
+    "cpu" : {
+        "format": "{}% <span size='large'></span>",
+        "on-click": "kitty -e 'top'"
+    },
+
+    "memory": {
+        "format": "| {used} / {total} <span size='large'>󰒋</span>  ",
+        "on-click": "kitty -e 'top'"
+    },
+
+    "temperature": {
+        "format": "{temperatureC}°C <span size='large'></span> |",
+        "on-click": "kitty -e 'top'"
+    },
+
+    "custom/separator": {
+        "format": "|  "
+    },
+
+    "group/nix": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "pc",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/menu",
+            "custom/separator",
+            "custom/blue-light-filter",
+            "custom/separator"
+        ]
+    },
+
+    "custom/menu": {
+        "format": "<span size='xx-large'></span>   ",
+        "on-click": "rofi -show drun",
+    },
+
+    "custom/blue-light-filter": {
+        "format": "<span size='xx-large'></span>   ",
+        "exec": "echo '{\"text\": \"OFF\", \"class\": \"disabled\"}'",
+        "return-type": "json",
+        "on-click": "~/.config/waybar/scripts/waybar-blue-light-filter.sh",
+        "signal": 1
+    }
+}

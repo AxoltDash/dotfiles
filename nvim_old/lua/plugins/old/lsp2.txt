@@ -1,0 +1,77 @@
+return {
+  {
+    "williamboman/mason.nvim",
+    lazy = false,
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    opts = {
+      auto_install = true,
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    lazy = false,
+    config = function()
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      local lspconfig = require("lspconfig")
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities
+      })
+      lspconfig.solargraph.setup({
+        capabilities = capabilities
+      })
+      lspconfig.html.setup({
+        capabilities = capabilities
+      })
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities
+      })
+
+    -- === LSP KEYMAPS ===
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+    vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+
+    -- === DIAGNOSTIC KEYMAPS ===
+    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Mostrar diagnóstico flotante" })
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Ir al diagnóstico anterior" })
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Ir al siguiente diagnóstico" })
+    vim.keymap.set("n", "<leader>q", function()
+          for _, win in ipairs(vim.fn.getwininfo()) do
+            if win.loclist == 1 then
+              vim.cmd("lclose")
+              return
+            end
+          end
+          vim.diagnostic.setloclist()
+        end, { desc = "Toggle lista de diagnósticos" })
+    end,
+  },
+  -- COQ ------------
+  {
+  "tomtomjhj/coq-lsp.nvim",
+  config = function()
+    require'coq-lsp'.setup {
+      coq_lsp_nvim = {
+        -- Configuración específica de coq-lsp.nvim
+      },
+      lsp = {
+        on_attach = function(client, bufnr)
+          -- tus mapeos, etc.
+        end,
+        init_options = {
+          show_notices_as_diagnostics = true,
+        },
+        autostart = false, -- Usa esto si quieres iniciar coq-lsp manualmente con :LspStart.
+      },
+    }
+  end,
+  },
+}

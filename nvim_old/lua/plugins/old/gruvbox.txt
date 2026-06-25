@@ -1,0 +1,24 @@
+return {
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+    vim.o.background = "dark" -- or "light" for light mode
+    require("gruvbox").setup({
+      style = "dark", -- or "light" for light mode
+      contrast = "medium", -- or "soft" for soft contrast
+      transparent = true, -- true will enable transparent
+      dark_sidebar = true, -- false will disable sidebar gradient
+      dark_float = true, -- false will disable float background
+      hide_inactive_statusline = true, -- false will disable inactive statusline
+      hide_end_of_buffer = true, -- false will show ~ at end of buffer
+      statusline = "gruvbox", -- false will not use statusline          
+    })
+    vim.cmd([[colorscheme gruvbox]])
+    vim.cmd([[
+      highlight Normal ctermbg=none guibg=none
+      highlight NonText ctermbg=none guibg=none
+    ]])
+    end,
+  }
+}

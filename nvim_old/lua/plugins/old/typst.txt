@@ -1,0 +1,16 @@
+return {
+  'chomosuke/typst-preview.nvim',
+  lazy = false, -- o ft = "typst"
+  version = '1.*',
+  opts = {
+    -- open_cmd = 'xdg-open %s',
+    -- port = 8080,
+	invert_colors = 'always',
+    -- debug = true,
+    dependencies_bin = {
+      tinymist = "/run/current-system/sw/bin/tinymist",
+      websocat = "/run/current-system/sw/bin/websocat",
+    },
+  },
+}
+

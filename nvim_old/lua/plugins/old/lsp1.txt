@@ -1,0 +1,36 @@
+return {
+  {
+    'neovim/nvim-lspconfig', -- LSP configurations
+    dependencies = {
+      'williamboman/mason.nvim', -- Mason to manage LSP servers
+      'williamboman/mason-lspconfig.nvim', -- Integration with mason.nvim
+    },
+    config = function()
+      -- Setup Mason
+      require('mason').setup()
+
+      -- Ensure Python and Java LSP servers are installed
+      require('mason-lspconfig').setup({
+        ensure_installed = { 'pyright', 'jdtls', 'jsonls', 'cssls', 'html', 'ts_ls' },
+      })
+
+      -- Setup (Python LSP) pyright
+      require('lspconfig').pyright.setup{}
+      -- Setup (Java LSP) jdtlslmason 
+      require('lspconfig').jdtls.setup{}
+      -- Setup (json LSP) jsonls
+      require('lspconfig').jsonls.setup{}
+      -- Setup (css LSP) cssls
+      require('lspconfig').cssls.setup{}
+      -- Setup (html LSP) html
+      require('lspconfig').html.setup{}
+      -- Setup (javascript LSP) ts_ls
+      require('lspconfig').ts_ls.setup{}
+
+      -- Keybindings for LSP functionality
+      vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { noremap = true, silent = true })
+    end
+  }
+}

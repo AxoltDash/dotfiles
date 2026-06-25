@@ -1,0 +1,39 @@
+return {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
+    },
+    config = function()
+        require("neo-tree").setup({
+            default_component_configs = {
+                keymaps = {
+                    ["<C-bs>"] = "navigate_down",
+                },
+            },
+            filesystem = {
+                filtered_items = {
+                    visible = true, -- This will show hidden files
+                    hide_dotfiles = false, -- This will show files starting with dots
+                    hide_gitignored = false, -- This will show files ignored by .gitignore
+                },
+            },
+        })
+vim.keymap.set("n", "<leader>e", function()
+  vim.cmd("Neotree toggle")
+end, { noremap = true, silent = true, desc = "Toggle Neo-tree" })
+
+
+		--		vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { noremap = true, silent = true })
+        -- vim.keymap.set("n", '<leader>e', function()
+        --     if vim.fn.bufname() == "neo-tree filesystem [1]" then
+        --         vim.cmd("Neotree close")
+        --     else
+        --         vim.cmd("Neotree filesystem reveal left")
+        --     end
+        -- end, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
+    end,
+}

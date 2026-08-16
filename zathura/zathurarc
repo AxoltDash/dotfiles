@@ -11,10 +11,10 @@ set statusbar-v-padding 10
 # Atajos de teclado personalizados
 map <C-d> scroll half-down
 map <C-u> scroll half-up
-map j feedkeys "<C-Down>"
-map k feedkeys "<C-Up>"
-map h feedkeys "<C-Left>"
-map l feedkeys "<C-Right>"
+# map j feedkeys "<C-Down>"
+# map k feedkeys "<C-Up>"
+# map h feedkeys "<C-Left>"
+# map l feedkeys "<C-Right>"
 
 # Cambiar a modo pantalla completa
 map <C-i> recolor

@@ -154,5 +154,5 @@ show-icons: true;
 //@theme "/usr/share/rofi/themes/DarkBlue.rasi"
 //@theme "/usr/share/rofi/themes/AxoltDash.rasi"
 //@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
-@theme "/home/axolt/.config/rofi/themes/everforest.rasi"
+@theme "/home/axolt/.config/rofi/themes/mosswood.rasi"
 //@theme "/home/axolt/.config/rofi/themes/everforest-monocraft.rasi"

@@ -28,7 +28,8 @@
 		"format": "{long}  |",
 		"format-us": "AMERICA, HELL YEAH!",
 		"format-us(intl)": "As ñ",
-		"keyboard-name": "rdr-alice-"
+		// "keyboard-name": "rdr-alice-"
+		"keyboard-name": "at-translated-set-2-keyboard"
 	},
     "hyprland/window": {
         "format": " - {title} ",

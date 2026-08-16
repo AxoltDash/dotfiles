@@ -20,6 +20,7 @@ My personal Linux configuration files, built around a [Hyprland](https://hyprlan
 
 ---
 
+#### MossWood
 **ALL** has a custom theme made with love by me ^^ , this theme was inspired by [xero/miasma](https://github.com/xero/miasma.nvim) and [morhetz/gruvbox](https://github.com/morhetz/gruvbox), but I focused for limit the blue light for the eyes... enjoy it
 
 **TODO: Take screenshots**

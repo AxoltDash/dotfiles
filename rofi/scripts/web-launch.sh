@@ -42,6 +42,8 @@ declare -A ENTRIES=(
   ["Bitwarden"]="https://vault.bitwarden.com/#/vault"
   ["Notion"]="https://www.notion.so/0b6ccb529f65420fa75ed7f178ba8694"
   ["One Note"]="https://onedrive.live.com/edit.aspx?resid=9FC9AB24401C708E!s02340cb7a941458cae36d9b2d093b1e3&migratedtospo=true&wd=target%28Quick%20Notes.one%7Cfea7eefe-78bf-ca45-9570-3241ad252b7f%2FWELCOME%20TO%20MY%20ONE%20NOTES%7C0669310a-da02-494a-b691-9b69aa9237c4%2F%29&wdorigin=NavigationUrl"
+  ["Google Task"]="https://tasks.google.com/tasks/"
+  ["Google Keep"]="https://keep.google.com/u/1/"
 
   # Media
   ["YouTube"]="https://www.youtube.com/"

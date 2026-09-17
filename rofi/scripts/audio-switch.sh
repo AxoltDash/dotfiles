@@ -2,16 +2,17 @@
 
 # ── Sinks ──────────────────────────────────────────────────────────────────────
 declare -A SINKS=(
-    ["🔊  Laptop speakers"]="alsa_output.pci-0000_03_00.6.HiFi__Speaker__sink"
-    ["🖥️  HDMI"]="alsa_output.pci-0000_03_00.1.HiFi__HDMI1__sink"
-    ["🎧  Bluetooth headphones"]="bluez_output.18_9C_2C_DD_03_3F.1"
+  ["🔊  Laptop speakers"]="alsa_output.pci-0000_03_00.6.HiFi__Speaker__sink"
+  ["🖥️  HDMI"]="alsa_output.pci-0000_03_00.1.HiFi__HDMI1__sink"
+  ["🎧  Bluetooth soundcore"]="bluez_output.18_9C_2C_DD_03_3F.1"
+  ["🎧  Bluetooth space one"]="bluez_output.90_BF_D9_60_AA_74.1"
 )
 
 # ── Show menu ──────────────────────────────────────────────────────────────────
 CHOICE=$(printf '%s\n' "${!SINKS[@]}" | sort | rofi -dmenu \
-    -p "🔊 Audio output" \
-    -theme-str 'window {width: 380px;}' \
-    -i)
+  -p "🔊 Audio output" \
+  -theme-str 'window {width: 380px;}' \
+  -i)
 
 [[ -z "$CHOICE" ]] && exit 0
 
@@ -21,7 +22,7 @@ pactl set-default-sink "$SINK"
 
 # Move all active streams to the new sink
 pactl list short sink-inputs | awk '{print $1}' | while read -r INPUT; do
-    pactl move-sink-input "$INPUT" "$SINK"
+  pactl move-sink-input "$INPUT" "$SINK"
 done
 
 # ── Notify ─────────────────────────────────────────────────────────────────────

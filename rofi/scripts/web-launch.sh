@@ -28,6 +28,7 @@ declare -A ENTRIES=(
   ["Competitive Guide"]="zathura Documents/books/competitive/handbook_cp.pdf"
   ["CodeForces"]="https://codeforces.com/group/GzNDQMd4CA/contests"
   ["ISC2"]="https://isc2.obrizum.io/org/cc"
+  ["Notebook"]="https://notebook.google.com/?icid=home_maincta&pli=1"
 
   # Dev
   ["GitHub"]="https://github.com/"

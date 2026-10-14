@@ -10,6 +10,7 @@ declare -A ENTRIES=(
   ["Gemini"]="https://gemini.google.com/u/1/app"
   ["Claude"]="https://claude.ai/new"
   ["Copilot"]="https://github.com/copilot"
+  ["Claude 101"]="https://academy.claude.com/courses/claude-101"
   ["Lumo"]="https://lumo.proton.me/"
 
   # Communication

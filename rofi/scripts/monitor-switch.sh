@@ -6,6 +6,8 @@ MONITORS_CONF="$HOME/.config/hypr/mod/monitors.conf"
 OPTIONS=(
     "🖥️  HDMI extended    1620p"
     "🪞  HDMI mirror      1620p"
+    "🖥️  HDMI extended    1920p@60"
+    "🪞  HDMI mirror      1920p@60"
     "🖥️  HDMI extended    1920p@100"
     "🪞  HDMI mirror      1920p@100"
 )
@@ -24,8 +26,12 @@ SOLO_LAPTOP='monitor = eDP-1, 1920x1080@60, 0x0, 1'
 
 HDMI_1620_EXT='monitor = HDMI-A-1, 1620x1080, auto, 1'
 HDMI_1620_MIR='monitor = HDMI-A-1, 1620x1080, auto, 1, mirror, eDP-1'
-HDMI_1920_EXT='monitor = HDMI-A-1, 1920x1080@100, auto, 1'
-HDMI_1920_MIR='monitor = HDMI-A-1, 1920x1080@100, auto, 1, mirror, eDP-1'
+
+HDMI_1920_60_EXT='monitor = HDMI-A-1, 1920x1080@60, auto, 1'
+HDMI_1920_60_MIR='monitor = HDMI-A-1, 1920x1080@60, auto, 1, mirror, eDP-1'
+
+HDMI_1920_100_EXT='monitor = HDMI-A-1, 1920x1080@100, auto, 1'
+HDMI_1920_100_MIR='monitor = HDMI-A-1, 1920x1080@100, auto, 1, mirror, eDP-1'
 
 # ── Write based on choice ──────────────────────────────────────────────────────
 case "$CHOICE" in
@@ -36,9 +42,12 @@ $SOLO_LAPTOP
 # - 1620px - #
 $HDMI_1620_EXT
 # $HDMI_1620_MIR
-# - 1920px - #
-# $HDMI_1920_EXT
-# $HDMI_1920_MIR
+# - 1920px @ 60Hz - #
+# $HDMI_1920_60_EXT
+# $HDMI_1920_60_MIR
+# - 1920px @ 100Hz - #
+# $HDMI_1920_100_EXT
+# $HDMI_1920_100_MIR
 EOF
         ;;
 
@@ -49,35 +58,76 @@ $SOLO_LAPTOP
 # - 1620px - #
 # $HDMI_1620_EXT
 $HDMI_1620_MIR
-# - 1920px - #
-# $HDMI_1920_EXT
-# $HDMI_1920_MIR
+# - 1920px @ 60Hz - #
+# $HDMI_1920_60_EXT
+# $HDMI_1920_60_MIR
+# - 1920px @ 100Hz - #
+# $HDMI_1920_100_EXT
+# $HDMI_1920_100_MIR
 EOF
         ;;
 
-    "${OPTIONS[2]}")   # HDMI extended 1920p
+    "${OPTIONS[2]}")   # HDMI extended 1920p@60
         cat > "$MONITORS_CONF" <<EOF
 $HEADER
 $SOLO_LAPTOP
 # - 1620px - #
 # $HDMI_1620_EXT
 # $HDMI_1620_MIR
-# - 1920px - #
-$HDMI_1920_EXT
-# $HDMI_1920_MIR
+# - 1920px @ 60Hz - #
+$HDMI_1920_60_EXT
+# $HDMI_1920_60_MIR
+# - 1920px @ 100Hz - #
+# $HDMI_1920_100_EXT
+# $HDMI_1920_100_MIR
 EOF
         ;;
 
-    "${OPTIONS[3]}")   # HDMI mirror 1920p
+    "${OPTIONS[3]}")   # HDMI mirror 1920p@60
         cat > "$MONITORS_CONF" <<EOF
 $HEADER
 $SOLO_LAPTOP
 # - 1620px - #
 # $HDMI_1620_EXT
 # $HDMI_1620_MIR
-# - 1920px - #
-# $HDMI_1920_EXT
-$HDMI_1920_MIR
+# - 1920px @ 60Hz - #
+# $HDMI_1920_60_EXT
+$HDMI_1920_60_MIR
+# - 1920px @ 100Hz - #
+# $HDMI_1920_100_EXT
+# $HDMI_1920_100_MIR
+EOF
+        ;;
+
+    "${OPTIONS[4]}")   # HDMI extended 1920p@100
+        cat > "$MONITORS_CONF" <<EOF
+$HEADER
+$SOLO_LAPTOP
+# - 1620px - #
+# $HDMI_1620_EXT
+# $HDMI_1620_MIR
+# - 1920px @ 60Hz - #
+# $HDMI_1920_60_EXT
+# $HDMI_1920_60_MIR
+# - 1920px @ 100Hz - #
+$HDMI_1920_100_EXT
+# $HDMI_1920_100_MIR
+EOF
+        ;;
+
+    "${OPTIONS[5]}")   # HDMI mirror 1920p@100
+        cat > "$MONITORS_CONF" <<EOF
+$HEADER
+$SOLO_LAPTOP
+# - 1620px - #
+# $HDMI_1620_EXT
+# $HDMI_1620_MIR
+# - 1920px @ 60Hz - #
+# $HDMI_1920_60_EXT
+# $HDMI_1920_60_MIR
+# - 1920px @ 100Hz - #
+# $HDMI_1920_100_EXT
+$HDMI_1920_100_MIR
 EOF
         ;;
 esac
